@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mesto</title>
+    <link rel="stylesheet" href="./pages/index.css" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body class="page">
+    <header class="header">
+      <div class="header__logo"></div>
+    </header>
+
+    <main>
+      <section class="section profile">
+        <img
+          src="./images/fernan-magelan.jpg"
+          alt="Ферна́н Магелла́н"
+          class="profile__avatar"
+        />
+        <div class="profile__info">
+          <h2 class="profile__name">Фернан Магеллан</h2>
+          <p class="profile__text">Тоже исследователь океана</p>
+          <button class="profile__edit button"></button>
+        </div>
+        <button class="profile__add button"></button>
+      </section>
+
+      <section class="section photo">
+        <ul class="photo__grid">
+          <li>
+            <div class="card">
+              <img
+                src="./images/mys dobroy nadejdi.jpg"
+                alt="мыс Доброй Надежды"
+                class="card__image"
+              />
+              <div class="card__down">
+                <p class="card__name">Мыс Доброй Надежды</p>
+                <button class="card__like button"></button>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="card">
+              <img
+                src="./images/ostrov-santa-krus.jpg"
+                alt="Остров Санта-Крус"
+                class="card__image"
+              />
+              <div class="card__down">
+                <p class="card__name">Санта-Крус</p>
+                <button class="card__like button"></button>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="card">
+              <img src="./images/guam.jpg" alt="Гуам" class="card__image" />
+              <div class="card__down">
+                <p class="card__name">Гуам</p>
+                <button class="card__like button"></button>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="card">
+              <img src="./images/sebu.jpg" alt="Себу" class="card__image" />
+              <div class="card__down">
+                <p class="card__name">Себу</p>
+                <button class="card__like button"></button>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="card">
+              <img src="./images/Tidore.jpg" alt="Тидоре" class="card__image" />
+              <div class="card__down">
+                <p class="card__name">Тидоре</p>
+                <button class="card__like button"></button>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="card">
+              <img
+                src="./images/Castillo_Santiago_Sanlucar.jpg"
+                alt="Санлукар-де-Баррамеда"
+                class="card__image"
+              />
+              <div class="card__down">
+                <p class="card__name">Санлукар-де-Баррамеда</p>
+                <button class="card__like button"></button>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </main>
+    <footer class="footer">
+      <p class="footer_author">© 2020 Mesto Russia</p>
+    </footer>
+  </body>
+</html>
