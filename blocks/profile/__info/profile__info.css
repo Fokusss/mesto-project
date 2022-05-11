@@ -1,0 +1,19 @@
+.profile__info {
+  margin: 0 0 0 30px;
+  display: grid;
+  grid-template-areas:
+  'name edit'
+  'text .';
+}
+
+@media screen and (max-width: 850px) {
+  .profile__info {
+    margin: 23.25px auto 0 46px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .profile__info {
+    grid-template-columns: 189px 25px;
+  }
+}
