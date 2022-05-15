@@ -21,11 +21,11 @@
           class="profile__avatar"
         />
         <div class="profile__info">
-          <h2 class="profile__name">Фернан Магеллан</h2>
+          <h1 class="profile__name">Фернан Магеллан</h1>
           <p class="profile__text">Тоже исследователь океана</p>
-          <button class="profile__edit button"></button>
+          <button aria-label="edit" type="button" class="profile__edit button"></button>
         </div>
-        <button class="profile__add button"></button>
+        <button aria-label="add" type="button" class="profile__add button"></button>
       </section>
 
       <section class="section photo">
@@ -38,8 +38,8 @@
                 class="card__image"
               />
               <div class="card__down">
-                <p class="card__name">Мыс Доброй Надежды</p>
-                <button class="card__like button"></button>
+                <h2 class="card__name">Мыс Доброй Надежды</h2>
+                <button aria-label="like" type="button" class="card__like button"></button>
               </div>
             </div>
           </li>
@@ -51,8 +51,8 @@
                 class="card__image"
               />
               <div class="card__down">
-                <p class="card__name">Санта-Крус</p>
-                <button class="card__like button"></button>
+                <h2 class="card__name">Санта-Крус</h2>
+                <button aria-label="like" type="button" class="card__like button"></button>
               </div>
             </div>
           </li>
@@ -60,8 +60,8 @@
             <div class="card">
               <img src="./images/guam.jpg" alt="Гуам" class="card__image" />
               <div class="card__down">
-                <p class="card__name">Гуам</p>
-                <button class="card__like button"></button>
+                <h2 class="card__name">Гуам</h2>
+                <button aria-label="like" type="button" class="card__like button"></button>
               </div>
             </div>
           </li>
@@ -69,8 +69,8 @@
             <div class="card">
               <img src="./images/sebu.jpg" alt="Себу" class="card__image" />
               <div class="card__down">
-                <p class="card__name">Себу</p>
-                <button class="card__like button"></button>
+                <h2 class="card__name">Себу</h2>
+                <button aria-label="like" type="button" class="card__like button"></button>
               </div>
             </div>
           </li>
@@ -78,8 +78,8 @@
             <div class="card">
               <img src="./images/Tidore.jpg" alt="Тидоре" class="card__image" />
               <div class="card__down">
-                <p class="card__name">Тидоре</p>
-                <button class="card__like button"></button>
+                <h2 class="card__name">Тидоре</h2>
+                <button aria-label="like" type="button" class="card__like button"></button>
               </div>
             </div>
           </li>
@@ -91,35 +91,24 @@
                 class="card__image"
               />
               <div class="card__down">
-                <p class="card__name">Санлукар-де-Баррамеда</p>
-                <button class="card__like button"></button>
+                <h2 class="card__name">Санлукар-де-Баррамеда</h2>
+                <button aria-label="like" type="button" class="card__like button"></button>
               </div>
             </div>
           </li>
         </ul>
       </section>
 
-      <div class="pop-up pop-up_active">
-        <div class="pop-up__container">
-          <div class="pop-up__bady">
-            <p class="pop-up__title">Редактировать профиль</p>
-            <form class="pop-up__edit">
-              <input
-                type="text"
-                placeholder="Фернан Магеллан"
-                class="pop-up__input pop-up__input_el_name"
-              />
-              <input
-                type="text"
-                placeholder="Тоже исследователь океана"
-                class="pop-up__input pop-up__input_el_text"
-              />
-              <button class="pop-up__save button">Сохранить</button>
-            </form>
-            <button class="pop-up__close button"></button>
-          </div>
+      <div class="pop-up pop-up_activ">
+        <div class="pop-up__body">
+          <h2 class="pop-up__title">Редактировать профиль</h2>
+          <form name="profile-edit" class="pop-up__form">
+            <input placeholder="Фернан Магеллан" type="text" class="pop-up__input pop-up__input_el_name">
+            <input placeholder="Тоже исследователь океана" type="text" class="pop-up__input pop-up__input_el_text">
+            <button aria-label="Save" type="submit" class="pop-up__save button">Сохранить</button>
+          </form>
+          <button aria-label="Close" type="button" class="pop-up__close button"></button>
         </div>
-      </div>
     </main>
 
     <footer class="footer">

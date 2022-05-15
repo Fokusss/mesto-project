@@ -9,9 +9,19 @@
   background-position: center;
 }
 
+.profile__add:hover {
+  opacity: .6;
+}
+
 @media screen and (max-width: 850px) {
   .profile__add {
     width: 282px;
     margin: 32px auto 0 auto;
+  }
+}
+
+@media screen and (max-width: 456px) {
+  .profile__add {
+    background-size: 16px 16px;
   }
 }

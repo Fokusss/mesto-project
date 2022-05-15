@@ -1,15 +1,13 @@
-.pop-up__bady {
+.pop-up__body {
   max-width: 430px;
-  height: 330px;
-  margin: auto;
   background-color: white;
-  border-radius: 10px;
+  margin: auto;
   position: relative;
+  border-radius: 10px;
 }
 
-@media screen and (max-width: 400px) {
-  .pop-up__bady {
-    width: 282px;
-    height: 322px;
+@media screen and (max-width: 445px) {
+  .pop-up__body {
+    max-width: 282px;
   }
 }
