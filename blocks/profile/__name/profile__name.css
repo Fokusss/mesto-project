@@ -6,9 +6,10 @@
   color: white;
   grid-area: name;
   text-align: center;
-  overflow: ellipsis;
+  text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  max-width: 450px;
 }
 
 @media screen and (max-width: 400px) {
