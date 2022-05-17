@@ -1,33 +1,47 @@
-console.log(document);
+/*function formSubmitHandler (evt) {
+  evt.preventDefault(); }
 
-let popUpOpen = document.querySelector('.profile__edit');
-let popUpClose = document.querySelector('.pop-up__close');
-let popUp = document.querySelector('.pop-up');
-let popUpSave = document.querySelector('.pop-up__save');
+  Отключает стандартное поведение формы.
+*/
 
-function popUpO() {
-  popUp.classList.add('pop-up_active');
+/* Функиция открытия и закрытия попапа */
+
+let popUpBodyList = document.querySelector('.pop-up_el_profile-edit');
+let editOpenButton = document.querySelector('.profile__edit');
+let editCloseButton = document.querySelector('.pop-up__close');
+let editSaveButton = document.querySelector('.pop-up__save');
+
+
+function openProfileEdit() {
+  let profileName = document.querySelector('.profile__name').textContent;
+  let profileText = document.querySelector('.profile__text').textContent;
+  let inputName = document.querySelector('.pop-up__input_el_name');
+  let inputText = document.querySelector('.pop-up__input_el_text');
+  inputName.setAttribute('placeholder', `${profileName}`);
+  inputText.setAttribute('placeholder', `${profileText}`);
+  popUpBodyList.classList.add('pop-up_active');
 }
 
-function popUpX() {
-  popUp.classList.remove('pop-up_active');
+editOpenButton.addEventListener('click', openProfileEdit);
+
+function closeProfileEdit() { // Функция закрытия Попапа
+  popUpBodyList.classList.remove('pop-up_active');
 }
 
-function popUpS() {
-  let profileName = document.querySelector('.pop-up__input_el_name');
-  let profileText = document.querySelector('.pop-up__input_el_text');
-  document.querySelector('.profile__name').textContent = '${profileName}';
-  document.querySelector('.rpofile__text').textContent = '${profileText}';
-  return false;
+editCloseButton.addEventListener('click', closeProfileEdit);
+
+function saveProfileEdit(evt) {
+  evt.preventDefault()
+  let inputValueName = document.querySelector('.pop-up__input_el_name').value;
+  let inputValueText = document.querySelector('.pop-up__input_el_text').value;
+  if (inputValueName !== '' && inputValueText !== '') {
+    document.querySelector('.profile__name').textContent = inputValueName;
+    document.querySelector('.profile__text').textContent = inputValueText;
+    closeProfileEdit()
+    document.querySelector('.pop-up__input_el_name').value = '';
+    document.querySelector('.pop-up__input_el_text').value = '';
+  }
 }
 
-popUpOpen.addEventListener('click', popUpO);
-popUpClose.addEventListener('click', popUpX);
-popUpSave.addEventListener('click', popUpS);
-
-
-
-
-
-
+editSaveButton.addEventListener('click', saveProfileEdit);
 
