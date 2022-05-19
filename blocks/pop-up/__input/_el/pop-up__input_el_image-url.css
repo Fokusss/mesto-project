@@ -1,0 +1,9 @@
+.pop-up__input_el_image-url {
+  margin-bottom: 48px;
+}
+
+@media screen and (max-width: 436px) {
+  .pop-up__input_el_image-url {
+    margin-bottom: 45px;
+  }
+}
