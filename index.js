@@ -16,6 +16,7 @@ let buttonSubmitAddCard = popUpAddCard.querySelector(".pop-up__form");
 let photoGrid = document.querySelector(".photo__grid");
 let cardTemplate = document.querySelector('#card-js');
 
+
 const urlPlace = ['./images/milandi.jpg', './images/Mombasa.jpg', './images/Kilwa.jpg',
   './images/puntaarneas.jpg', './images/tenerife.jpg', './images/sevilya.jpg'];
 
@@ -60,34 +61,39 @@ function openPopUp(element) {
 }
 
 function addCard(element) {
-  /* Добавление мест `${urlImage}` */
+  /* Добавление мест из формы */
+  let cardItem = cardTemplate.content.querySelector('li').cloneNode(true);
   let nameCard = element.querySelector(".pop-up__input_el_mesto").value;
   let urlImage = element.querySelector(".pop-up__input_el_image-url").value;
-  let cardItem = cardTemplate.content.querySelector('li').cloneNode(true);
   cardItem.querySelector('.card__image').setAttribute('src', urlImage);
   cardItem.querySelector('.card__name').textContent = nameCard;
+  cardItem.querySelector('.card__like').addEventListener('click', function(evt) {
+    evt.target.classList.toggle('card__like_active');
+  })
   photoGrid.prepend(cardItem);
+
 }
+
+
 function addCards(a, b) {
   for (let i = 0; a.length !== i; i += 1) {
-    photoGrid.insertAdjacentHTML(
-      "afterbegin",
-      `<li>
-  <div class="card">
-    <img
-      src="${b[i]}"
-      alt="фото места"
-      class="card__image"
-    />
-    <div class="card__down">
-      <h2 class="card__name">${a[i]}</h2>
-      <button aria-label="like" type="button" class="card__like button"></button>
-    </div>
-  </div>
-  </li>`
-    );
+    let cardItem = cardTemplate.content.querySelector('li').cloneNode(true);
+    cardItem.querySelector('.card__image').setAttribute('src', b[i]);
+    cardItem.querySelector('.card__name').textContent = a[i];
+    photoGrid.prepend(cardItem);
+}
+}
+
+function addClickLike() {
+  let allButtonLike = document.querySelectorAll('.card__like');
+  console.log(allButtonLike);
+  for (let i = 0; i < allButtonLike.length; i ++) {
+    allButtonLike[i].addEventListener('click', function(evt) {
+      evt.target.classList.toggle('card__like_active');
+    })
   }
 }
+
 
 /* Слушатели "Профиля" */
 
@@ -125,3 +131,5 @@ buttonSubmitAddCard.addEventListener("submit", function (evt) {
 });
 
 addCards(namePlace, urlPlace);
+
+addClickLike();
