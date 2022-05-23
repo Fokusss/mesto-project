@@ -4,7 +4,6 @@
   Отключает стандартное поведение формы.
 */
 
-/* Функиция открытия и закрытия попапа профиля */
 
 let buttonOpenEditProfile = document.querySelector(".profile__edit");
 let buttonOpenAddCard = document.querySelector(".profile__add");
@@ -15,6 +14,7 @@ let popUpAddCard = document.querySelector(".pop-up_el_add-card");
 let buttonCloseAddCard = popUpAddCard.querySelector(".pop-up__close");
 let buttonSubmitAddCard = popUpAddCard.querySelector(".pop-up__form");
 let photoGrid = document.querySelector(".photo__grid");
+let cardTemplate = document.querySelector('#card-js');
 
 const urlPlace = ['./images/milandi.jpg', './images/Mombasa.jpg', './images/Kilwa.jpg',
   './images/puntaarneas.jpg', './images/tenerife.jpg', './images/sevilya.jpg'];
@@ -60,40 +60,27 @@ function openPopUp(element) {
 }
 
 function addCard(element) {
-  /* Добавление мест */
+  /* Добавление мест `${urlImage}` */
   let nameCard = element.querySelector(".pop-up__input_el_mesto").value;
   let urlImage = element.querySelector(".pop-up__input_el_image-url").value;
-  photoGrid.insertAdjacentHTML(
-    "afterbegin",
-    `<li>
-  <div class="card">
-    <img
-      src="${urlImage}"
-      alt="фото места"
-      class="card__image"
-    />
-    <div class="card__down">
-      <h2 class="card__name">${nameCard}</h2>
-      <button aria-label="like" type="button" class="card__like button"></button>
-    </div>
-  </div>
-  </li>`
-  );
+  let cardItem = cardTemplate.content.querySelector('li').cloneNode(true);
+  cardItem.querySelector('.card__image').setAttribute('src', urlImage);
+  cardItem.querySelector('.card__name').textContent = nameCard;
+  photoGrid.prepend(cardItem);
 }
-
-function addCards(namePlace, urlPlace) {
-  for (let i = 0; namePlace.length !== i; i += 1) {
+function addCards(a, b) {
+  for (let i = 0; a.length !== i; i += 1) {
     photoGrid.insertAdjacentHTML(
       "afterbegin",
       `<li>
   <div class="card">
     <img
-      src="${urlPlace[i]}"
+      src="${b[i]}"
       alt="фото места"
       class="card__image"
     />
     <div class="card__down">
-      <h2 class="card__name">${namePlace[i]}</h2>
+      <h2 class="card__name">${a[i]}</h2>
       <button aria-label="like" type="button" class="card__like button"></button>
     </div>
   </div>
