@@ -94,6 +94,14 @@ function addClickLike() {
   }
 }
 
+function addDeleteButton() {
+  let allButtonDelete = document.querySelectorAll('.card__delete');
+  for (let i = 0; i < allButtonDelete.length; i++){
+    allButtonDelete[i].addEventListener('click', (evt) =>{
+      evt.target.closest('li').remove();
+    })
+  }
+}
 
 /* Слушатели "Профиля" */
 
@@ -133,3 +141,5 @@ buttonSubmitAddCard.addEventListener("submit", function (evt) {
 addCards(namePlace, urlPlace);
 
 addClickLike();
+
+addDeleteButton();
