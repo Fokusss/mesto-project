@@ -15,6 +15,9 @@ let buttonCloseAddCard = popUpAddCard.querySelector(".pop-up__close");
 let buttonSubmitAddCard = popUpAddCard.querySelector(".pop-up__form");
 let photoGrid = document.querySelector(".photo__grid");
 let cardTemplate = document.querySelector('#card-js');
+let buttonPopUpImage = document.querySelector('.pop-up_el_image');
+let buttonClosePopUpImage = buttonPopUpImage.querySelector('.pop-up__close');
+
 
 
 const urlPlace = ['./images/milandi.jpg', './images/Mombasa.jpg', './images/Kilwa.jpg',
@@ -70,10 +73,27 @@ function addCard(element) {
   cardItem.querySelector('.card__like').addEventListener('click', function(evt) {
     evt.target.classList.toggle('card__like_active');
   })
+  cardItem.querySelector('.card__delete').addEventListener('click',(evt) => {
+    evt.target.closest('li').remove();
+  } )
   photoGrid.prepend(cardItem);
-
 }
 
+function hideImage(a) {
+  let imagePop = buttonPopUpImage.querySelector('img');
+  imagePop.src = a;
+}
+
+function addPopUpImage(){
+  let buttonsCardImage = document.querySelectorAll('.card__image');
+  for (let i = 0; i < buttonsCardImage.length; i++ ){
+    buttonsCardImage[i].addEventListener('click', (evt) => {
+      openPopUp(buttonPopUpImage);
+      let srcImage = evt.target.src
+      hideImage(srcImage);
+    })
+  }
+}
 
 function addCards(a, b) {
   for (let i = 0; a.length !== i; i += 1) {
@@ -138,8 +158,14 @@ buttonSubmitAddCard.addEventListener("submit", function (evt) {
   hidePopUp(popUpAddCard);
 });
 
+buttonClosePopUpImage.addEventListener('click', () => {
+  hidePopUp(buttonPopUpImage);
+})
+
 addCards(namePlace, urlPlace);
 
 addClickLike();
 
 addDeleteButton();
+
+addPopUpImage();
