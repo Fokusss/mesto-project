@@ -101,7 +101,7 @@ function chageProfile() {
   profileText.textContent = formInputText.value;
 }
 
-function addCard(name, urlImage) {
+function createCard(name, urlImage) {
   const cardLi = templateCard.querySelector("li").cloneNode(true);
   const buttonDeleteCard = cardLi.querySelector(".card__delete");
   const buttonLikeCard = cardLi.querySelector(".card__like");
@@ -115,7 +115,12 @@ function addCard(name, urlImage) {
   cardImage.addEventListener("click", (evt) =>
     changePopUpImage(name, urlImage)
   );
-  cardsContainer.prepend(cardLi);
+  return cardLi
+}
+
+function addCard(name, urlImage) {
+  const newCard = createCard(name, urlImage);
+  cardsContainer.prepend(newCard);
 }
 
 function addCards(place) {
