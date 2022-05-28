@@ -1,12 +1,9 @@
 # Проект: Место
 
+Github Pages: https://fokusss.github.io/mesto-project/
+
 ### Обзор
 
 Сайт макет соц.сети.
-Использются html и CSS.
+Использются html, CSS и JS
 Построения сетки на Grid и Flex.
-
-
-Github Pages: https://fokusss.github.io/mesto-project/
-
-

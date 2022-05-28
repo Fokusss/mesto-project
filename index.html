@@ -1,118 +1,145 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mesto</title>
-    <link rel="stylesheet" href="./pages/index.css" />
-  </head>
 
-  <body class="page">
-    <header class="header">
-      <div class="header__logo"></div>
-    </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mesto</title>
+  <link rel="stylesheet" href="./pages/index.css" />
+</head>
 
-    <main>
-      <section class="section profile">
-        <img
-          src="./images/fernan-magelan.jpg"
-          alt="Аватар"
-          class="profile__avatar"
-        />
-        <div class="profile__info">
-          <h1 class="profile__name">Фернан Магеллан</h1>
-          <p class="profile__text">Тоже исследователь океана</p>
-          <button aria-label="edit" type="button" class="profile__edit button"></button>
+<body class="page">
+  <header class="header">
+    <div class="header__logo"></div>
+  </header>
+
+  <main>
+    <section class="section profile">
+      <img src="./images/fernan-magelan.jpg" alt="Аватар" class="profile__avatar" />
+      <div class="profile__info">
+        <h1 class="profile__name">Фернан Магеллан</h1>
+        <p class="profile__text">Тоже исследователь океана</p>
+        <button aria-label="edit" type="button" class="profile__edit button"></button>
+      </div>
+      <button aria-label="add" type="button" class="profile__add button"></button>
+    </section>
+
+    <section class="section photo">
+      <ul class="photo__grid">
+        <li>
+          <div class="card">
+            <img src="./images/mys-dobroy-nadejdi.jpg" alt="мыс Доброй Надежды" class="card__image" />
+            <div class="card__down">
+              <h2 class="card__name">Мыс Доброй Надежды</h2>
+              <button aria-label="like" type="button" class="card__like button"></button>
+            </div>
+            <button aria-label="delete" type="button" class="card__delete button"></button>
+          </div>
+        </li>
+        <li>
+          <div class="card">
+            <img src="./images/ostrov-santa-krus.jpg" alt="Остров Санта-Крус" class="card__image" />
+            <div class="card__down">
+              <h2 class="card__name">Санта-Крус</h2>
+              <button aria-label="like" type="button" class="card__like button"></button>
+            </div>
+            <button aria-label="delete" type="button" class="card__delete button"></button>
+          </div>
+        </li>
+        <li>
+          <div class="card">
+            <img src="./images/guam.jpg" alt="Гуам" class="card__image" />
+            <div class="card__down">
+              <h2 class="card__name">Гуам</h2>
+              <button aria-label="like" type="button" class="card__like button"></button>
+            </div>
+            <button aria-label="delete" type="button" class="card__delete button"></button>
+          </div>
+        </li>
+        <li>
+          <div class="card">
+            <img src="./images/sebu.jpg" alt="Себу" class="card__image" />
+            <div class="card__down">
+              <h2 class="card__name">Себу</h2>
+              <button aria-label="like" type="button" class="card__like button"></button>
+            </div>
+            <button aria-label="delete" type="button" class="card__delete button"></button>
+          </div>
+        </li>
+        <li>
+          <div class="card">
+            <img src="./images/Tidore.jpg" alt="Тидоре" class="card__image" />
+            <div class="card__down">
+              <h2 class="card__name">Тидоре</h2>
+              <button aria-label="like" type="button" class="card__like button"></button>
+            </div>
+            <button aria-label="delete" type="button" class="card__delete button"></button>
+          </div>
+        </li>
+        <li>
+          <div class="card">
+            <img src="./images/Castillo_Santiago_Sanlucar.jpg" alt="Санлукар-де-Баррамеда" class="card__image" />
+            <div class="card__down">
+              <h2 class="card__name">Санлукар-де-Баррамеда</h2>
+              <button aria-label="like" type="button" class="card__like button"></button>
+            </div>
+            <button aria-label="delete" type="button" class="card__delete button"></button>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <div class="pop-up pop-up_el_profile-edit">
+      <div class="pop-up__body">
+        <h2 class="pop-up__title">Редактировать профиль</h2>
+        <form name="profile-edit" class="pop-up__form">
+          <input required placeholder="" type="text" name="name" class="pop-up__input">
+          <input required placeholder="" type="text" name="text" class="pop-up__input">
+          <button aria-label="Save" type="submit" class="pop-up__save button">Сохранить</button>
+        </form>
+        <button aria-label="Close" type="button" class="pop-up__close button"></button>
+      </div>
+    </div>
+
+    <div class="pop-up pop-up_el_add-card">
+      <div class="pop-up__body">
+        <h2 class="pop-up__title">Новое место</h2>
+        <form name="card-add" class="pop-up__form">
+          <input required placeholder="Название" type="text" name="mesto-name" class="pop-up__input">
+          <input required placeholder="Ссылка на картинку" type="text" name="url-image" class="pop-up__input">
+          <button aria-label="Save" type="submit" class="pop-up__save button">Сохранить</button>
+        </form>
+        <button aria-label="Close" type="button" class="pop-up__close button"></button>
+      </div>
+    </div>
+
+    <div class="pop-up pop-up_el_image">
+      <div class="pop-up__image">
+        <img src="" alt="Место" class="pop-up__images">
+        <button aria-label="Close" type="button" class="pop-up__close button"></button>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p class="footer__author">&copy; 2022 Mesto Russia</p>
+  </footer>
+
+  <template id="card-js">
+    <li>
+      <div class="card">
+        <img src="" alt="фото места" class="card__image" />
+        <div class="card__down">
+          <h2 class="card__name"></h2>
+          <button aria-label="like" type="button" class="card__like button"></button>
         </div>
-        <button aria-label="add" type="button" class="profile__add button"></button>
-      </section>
+        <button aria-label="delete" type="button" class="card__delete button"></button>
+      </div>
+    </li>
+  </template>
+  <script src="./index.js"></script>
+</body>
 
-      <section class="section photo">
-        <ul class="photo__grid">
-          <li>
-            <div class="card">
-              <img
-                src="./images/mys-dobroy-nadejdi.jpg"
-                alt="мыс Доброй Надежды"
-                class="card__image"
-              />
-              <div class="card__down">
-                <h2 class="card__name">Мыс Доброй Надежды</h2>
-                <button aria-label="like" type="button" class="card__like button"></button>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="card">
-              <img
-                src="./images/ostrov-santa-krus.jpg"
-                alt="Остров Санта-Крус"
-                class="card__image"
-              />
-              <div class="card__down">
-                <h2 class="card__name">Санта-Крус</h2>
-                <button aria-label="like" type="button" class="card__like button"></button>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="card">
-              <img src="./images/guam.jpg" alt="Гуам" class="card__image" />
-              <div class="card__down">
-                <h2 class="card__name">Гуам</h2>
-                <button aria-label="like" type="button" class="card__like button"></button>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="card">
-              <img src="./images/sebu.jpg" alt="Себу" class="card__image" />
-              <div class="card__down">
-                <h2 class="card__name">Себу</h2>
-                <button aria-label="like" type="button" class="card__like button"></button>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="card">
-              <img src="./images/Tidore.jpg" alt="Тидоре" class="card__image" />
-              <div class="card__down">
-                <h2 class="card__name">Тидоре</h2>
-                <button aria-label="like" type="button" class="card__like button"></button>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="card">
-              <img
-                src="./images/Castillo_Santiago_Sanlucar.jpg"
-                alt="Санлукар-де-Баррамеда"
-                class="card__image"
-              />
-              <div class="card__down">
-                <h2 class="card__name">Санлукар-де-Баррамеда</h2>
-                <button aria-label="like" type="button" class="card__like button"></button>
-              </div>
-            </div>
-          </li>
-        </ul>
-      </section>
-
-      <div class="pop-up pop-up_active">
-        <div class="pop-up__body">
-          <h2 class="pop-up__title">Редактировать профиль</h2>
-          <form name="profile-edit" class="pop-up__form">
-            <input placeholder="Фернан Магеллан" type="text" class="pop-up__input pop-up__input_el_name">
-            <input placeholder="Тоже исследователь океана" type="text" class="pop-up__input pop-up__input_el_text">
-            <button aria-label="Save" type="submit" class="pop-up__save button">Сохранить</button>
-          </form>
-          <button aria-label="Close" type="button" class="pop-up__close button"></button>
-        </div>
-    </main>
-
-    <footer class="footer">
-      <p class="footer__author">&copy; 2022 Mesto Russia</p>
-    </footer>
-  </body>
 </html>
