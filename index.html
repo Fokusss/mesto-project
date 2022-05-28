@@ -94,8 +94,8 @@
       <div class="pop-up__body">
         <h2 class="pop-up__title">Редактировать профиль</h2>
         <form name="profile-edit" class="pop-up__form">
-          <input required placeholder="" type="text" class="pop-up__input pop-up__input_el_name">
-          <input required placeholder="" type="text" class="pop-up__input pop-up__input_el_text">
+          <input required placeholder="" type="text" name="name" class="pop-up__input">
+          <input required placeholder="" type="text" name="text" class="pop-up__input">
           <button aria-label="Save" type="submit" class="pop-up__save button">Сохранить</button>
         </form>
         <button aria-label="Close" type="button" class="pop-up__close button"></button>
@@ -106,8 +106,8 @@
       <div class="pop-up__body">
         <h2 class="pop-up__title">Новое место</h2>
         <form name="card-add" class="pop-up__form">
-          <input required placeholder="Название" type="text" class="pop-up__input pop-up__input_el_mesto">
-          <input required placeholder="Ссылка на картинку" type="text" class="pop-up__input pop-up__input_el_image-url">
+          <input required placeholder="Название" type="text" name="mesto-name" class="pop-up__input">
+          <input required placeholder="Ссылка на картинку" type="text" name="url-image" class="pop-up__input">
           <button aria-label="Save" type="submit" class="pop-up__save button">Сохранить</button>
         </form>
         <button aria-label="Close" type="button" class="pop-up__close button"></button>

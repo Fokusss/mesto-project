@@ -1,9 +1,0 @@
-.pop-up__input_el_text {
-  margin-bottom: 48px;
-}
-
-@media screen and (max-width: 436px) {
-  .pop-up__input_el_text {
-    margin-bottom: 45px;
-  }
-}
