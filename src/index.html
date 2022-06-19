@@ -6,7 +6,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mesto</title>
-  <link rel="stylesheet" href="./pages/index.css" />
 </head>
 
 <body class="page">
@@ -16,7 +15,7 @@
 
   <main>
     <section class="section profile">
-      <img src="./images/fernan-magelan.jpg" alt="Аватар" class="profile__avatar" />
+      <img src="<%=require('../images/fernan-magelan.jpg')%>" alt="Аватар" class="profile__avatar" />
       <div class="profile__info">
         <h1 class="profile__name">Фернан Магеллан</h1>
         <p class="profile__text">Тоже исследователь океана</p>
@@ -39,9 +38,15 @@
     <div class="pop-up__body">
       <h2 class="pop-up__title">Редактировать профиль</h2>
       <form name="profile-edit" class="pop-up__form">
-        <input required placeholder="" type="text" name="name" class="pop-up__input">
-        <input required placeholder="" type="text" name="text" class="pop-up__input">
-        <button aria-label="Save" type="submit" class="pop-up__save button">Сохранить</button>
+        <label class="form__field">
+          <input id="name-author" required minlength="2" maxlength="40" placeholder="Имя" type="text" name="name" class="form__input">
+          <span class="name-author-error form__input_error"></span>
+        </label>
+        <label class="form__field">
+          <input id="sub-name-author" required minlength="2" maxlength="200" placeholder="О себе" type="text" name="text" class="form__input">
+          <span class="sub-name-author-error form__input_error"></span>
+        </label>
+        <button aria-label="Save" type="submit" class="form__save button">Сохранить</button>
       </form>
       <button aria-label="Close" type="button" class="pop-up__close button"></button>
     </div>
@@ -50,10 +55,18 @@
   <div class="pop-up pop-up_el_add-card">
     <div class="pop-up__body">
       <h2 class="pop-up__title">Новое место</h2>
-      <form name="card-add" class="pop-up__form">
-        <input required placeholder="Название" type="text" name="mesto-name" class="pop-up__input">
-        <input required placeholder="Ссылка на картинку" type="text" name="url-image" class="pop-up__input">
-        <button aria-label="Save" type="submit" class="pop-up__save button">Сохранить</button>
+      <form novalidate name="card-add" class="pop-up__form">
+        <label class="form__field">
+          <input id="new-place" required minlength="2" maxlength="30" placeholder="Название" type="text"
+            name="mesto-name" class="form__input">
+          <span class="new-place-error form__input_error"></span>
+        </label>
+        <label class="form__field">
+          <input id="new-url-place" required placeholder="Ссылка на картинку" type="url" name="url-image"
+            class="form__input">
+          <span class="new-url-place-error form__input_error"></span>
+        </label>
+        <button aria-label="Save" type="submit" class="form__save button">Создать</button>
       </form>
       <button aria-label="Close" type="button" class="pop-up__close button"></button>
     </div>
@@ -79,7 +92,6 @@
       </div>
     </li>
   </template>
-  <script src="./index.js"></script>
 </body>
 
 </html>
