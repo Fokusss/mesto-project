@@ -1,15 +1,24 @@
-const milandiImage = new URL('../images/milandi.jpg', import.meta.url)
-const mombasaImage = new URL('../images/Mombasa.jpg', import.meta.url)
-const kilwaImage = new URL('../images/Kilwa.jpg', import.meta.url)
-const puntaarneasImage = new URL("../images/puntaarneas.jpg", import.meta.url)
-const tenerifeImage = new URL("../images/tenerife.jpg", import.meta.url)
-const sevilyaImage = new URL("../images/sevilya.jpg", import.meta.url)
-const mysNadejdiImage = new URL("../images/mys-dobroy-nadejdi.jpg", import.meta.url)
-const ostrovSantaKrusImage = new URL("../images/ostrov-santa-krus.jpg", import.meta.url)
-const guamImage = new URL("../images/guam.jpg", import.meta.url)
-const sebuImage = new URL("../images/sebu.jpg", import.meta.url)
-const tidoreImage = new URL("../images/Tidore.jpg", import.meta.url)
-const castilioImage = new URL("../images/Castillo_Santiago_Sanlucar.jpg", import.meta.url)
+const milandiImage = new URL("./images/milandi.jpg", import.meta.url);
+const mombasaImage = new URL("./images/Mombasa.jpg", import.meta.url);
+const kilwaImage = new URL("./images/Kilwa.jpg", import.meta.url);
+const puntaarneasImage = new URL("./images/puntaarneas.jpg", import.meta.url);
+const tenerifeImage = new URL("./images/tenerife.jpg", import.meta.url);
+const sevilyaImage = new URL("./images/sevilya.jpg", import.meta.url);
+const mysNadejdiImage = new URL(
+  "./images/mys-dobroy-nadejdi.jpg",
+  import.meta.url
+);
+const ostrovSantaKrusImage = new URL(
+  "./images/ostrov-santa-krus.jpg",
+  import.meta.url
+);
+const guamImage = new URL("./images/guam.jpg", import.meta.url);
+const sebuImage = new URL("./images/sebu.jpg", import.meta.url);
+const tidoreImage = new URL("./images/Tidore.jpg", import.meta.url);
+const castilioImage = new URL(
+  "./images/Castillo_Santiago_Sanlucar.jpg",
+  import.meta.url
+);
 
 const place = [
   {
@@ -88,9 +97,34 @@ const formInputMestoName = popUpAddCard.querySelector(
 );
 const formInputUrlImage = popUpAddCard.querySelector('input[name="url-image"]');
 
+const validateConfig = {
+  formSelector: ".pop-up__form",
+  inputSelector: ".form__input",
+  submitButtonSelector: ".form__save",
+  inactiveButtonClass: "form__save_disabled",
+  inputErrorClass: "form__input_type_error",
+  errorClass: "form__error_active",
+};
+
 export {
-  place, popUpProfileEdit, formProfileEdit, buttonOpenProfilEdit, buttonClosePopUpProfile,
-  popUpAddCard, buttonOpenAddCard, formAddCard, buttonCloseAddCard, templateCard,
-  cardsContainer, popUpImage, buttonCloseImage, formInputName, formInputText,
-  profileName, profileText, formInputMestoName, formInputUrlImage
-}
+  place,
+  popUpProfileEdit,
+  formProfileEdit,
+  buttonOpenProfilEdit,
+  buttonClosePopUpProfile,
+  popUpAddCard,
+  buttonOpenAddCard,
+  formAddCard,
+  buttonCloseAddCard,
+  templateCard,
+  cardsContainer,
+  popUpImage,
+  buttonCloseImage,
+  formInputName,
+  formInputText,
+  profileName,
+  profileText,
+  formInputMestoName,
+  formInputUrlImage,
+  validateConfig,
+};

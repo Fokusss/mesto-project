@@ -1,31 +1,69 @@
 import {
-  place, popUpProfileEdit, formProfileEdit, buttonOpenProfilEdit, buttonClosePopUpProfile,
-  popUpAddCard, buttonOpenAddCard, formAddCard, buttonCloseAddCard, templateCard,
-  cardsContainer, popUpImage, buttonCloseImage, formInputName, formInputText,
-  profileName, profileText, formInputMestoName, formInputUrlImage
-} from './data.js'
+  place,
+  popUpProfileEdit,
+  formProfileEdit,
+  buttonOpenProfilEdit,
+  buttonClosePopUpProfile,
+  popUpAddCard,
+  buttonOpenAddCard,
+  formAddCard,
+  buttonCloseAddCard,
+  templateCard,
+  cardsContainer,
+  popUpImage,
+  buttonCloseImage,
+  formInputName,
+  formInputText,
+  profileName,
+  profileText,
+  formInputMestoName,
+  formInputUrlImage,
+  validateConfig,
+} from "./data.js";
 
 import {
-  showInputError, hideInputError, isValid, hasValidInput, toggleActiveButton,
-  setEventListeners, setValidationForm
-} from './validation.js'
+  showInputError,
+  hideInputError,
+  isValid,
+  hasValidInput,
+  toggleActiveButton,
+  setEventListeners,
+  setValidationForm,
+} from "./validate.js";
 
 import {
-  workHideEscape, workHideOverlay, openPopUp, hidePopUp, changeValue,
-  deleteCard, likeCard, chageProfile, createCard, addCard, addCards,
-  changePopUpImage, submitProfileEdit, submitAddCard, openPopUpProfile
-} from './workPopUp.js'
+  workHideEscape,
+  workHideOverlay,
+  openPopUp,
+  hidePopUp,
+  changeValue,
+  chageProfile,
+  submitProfileEdit,
+  submitAddCard,
+  openPopUpProfile,
+} from "./modal.js";
 
-import '../pages/index.css';
+import {
+  createCard,
+  addCard,
+  addCards,
+  changePopUpImage,
+  deleteCard,
+  likeCard,
+} from "./card.js";
 
-setValidationForm();
+import "./pages/index.css";
+
+setValidationForm(validateConfig);
 addCards(place);
 
 buttonOpenProfilEdit.addEventListener("click", () => openPopUpProfile());
 
 formProfileEdit.addEventListener("submit", (evt) => submitProfileEdit(evt));
 
-buttonClosePopUpProfile.addEventListener("click", () => hidePopUp(popUpProfileEdit));
+buttonClosePopUpProfile.addEventListener("click", () =>
+  hidePopUp(popUpProfileEdit)
+);
 
 buttonOpenAddCard.addEventListener("click", () => openPopUp(popUpAddCard));
 
