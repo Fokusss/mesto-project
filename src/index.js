@@ -19,7 +19,7 @@ import {
   formInputMestoName,
   formInputUrlImage,
   validateConfig,
-} from "./data.js";
+} from "./components/data.js";
 
 import {
   showInputError,
@@ -29,7 +29,7 @@ import {
   toggleActiveButton,
   setEventListeners,
   setValidationForm,
-} from "./validate.js";
+} from "./components/validate.js";
 
 import {
   workHideEscape,
@@ -41,7 +41,7 @@ import {
   submitProfileEdit,
   submitAddCard,
   openPopUpProfile,
-} from "./modal.js";
+} from "./components/modal.js";
 
 import {
   createCard,
@@ -50,7 +50,7 @@ import {
   changePopUpImage,
   deleteCard,
   likeCard,
-} from "./card.js";
+} from "./components/card.js";
 
 import "./pages/index.css";
 
