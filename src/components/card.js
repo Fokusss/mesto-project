@@ -39,16 +39,9 @@ function addCard(name, urlImage) {
   cardsContainer.prepend(newCard);
 }
 
-function addCards(place) {
-  place.forEach((item) => {
-    addCard(item.name, item.link);
-  });
-}
-
 export {
   createCard,
   addCard,
-  addCards,
   changePopUpImage,
   deleteCard,
   likeCard,

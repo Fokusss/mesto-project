@@ -30,14 +30,15 @@ function workHideOverlay(evt) {
 }
 
 function openPopUp(element) {
-  if (!element.classList.contains("pop-up_el_image")) {
-    const inputList = Array.from(element.querySelectorAll(".form__input"));
-    const buttonSave = element.querySelector(".form__save");
-    toggleActiveButton(inputList, buttonSave, validateConfig);
-  }
   element.classList.add("pop-up_active");
   document.addEventListener("keydown", workHideEscape);
   document.addEventListener("mousedown", workHideOverlay);
+}
+
+function updateButtonSave(element) {
+  const inputList = Array.from(element.querySelectorAll(".form__input"));
+  const buttonSave = element.querySelector(".form__save");
+  toggleActiveButton(inputList, buttonSave, validateConfig);
 }
 
 function hidePopUp(element) {
@@ -74,6 +75,11 @@ function openPopUpProfile() {
   openPopUp(popUpProfileEdit);
 }
 
+function openPopUpAddCard() {
+  updateButtonSave(popUpAddCard);
+  openPopUp(popUpAddCard);
+}
+
 export {
   workHideEscape,
   workHideOverlay,
@@ -84,4 +90,5 @@ export {
   submitProfileEdit,
   submitAddCard,
   openPopUpProfile,
+  openPopUpAddCard,
 };

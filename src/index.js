@@ -1,5 +1,5 @@
 import {
-  place,
+  places,
   popUpProfileEdit,
   formProfileEdit,
   buttonOpenProfilEdit,
@@ -8,54 +8,37 @@ import {
   buttonOpenAddCard,
   formAddCard,
   buttonCloseAddCard,
-  templateCard,
-  cardsContainer,
   popUpImage,
   buttonCloseImage,
-  formInputName,
-  formInputText,
-  profileName,
-  profileText,
-  formInputMestoName,
-  formInputUrlImage,
   validateConfig,
 } from "./components/data.js";
 
 import {
-  showInputError,
-  hideInputError,
-  isValid,
-  hasValidInput,
-  toggleActiveButton,
-  setEventListeners,
   setValidationForm,
 } from "./components/validate.js";
 
 import {
-  workHideEscape,
-  workHideOverlay,
-  openPopUp,
   hidePopUp,
-  changeValue,
-  chageProfile,
   submitProfileEdit,
   submitAddCard,
   openPopUpProfile,
+  openPopUpAddCard,
 } from "./components/modal.js";
 
 import {
-  createCard,
   addCard,
-  addCards,
-  changePopUpImage,
-  deleteCard,
-  likeCard,
 } from "./components/card.js";
 
 import "./pages/index.css";
 
+function addCards(places) {
+  places.forEach((item) => {
+    addCard(item.name, item.link);
+  });
+}
+
 setValidationForm(validateConfig);
-addCards(place);
+addCards(places);
 
 buttonOpenProfilEdit.addEventListener("click", () => openPopUpProfile());
 
@@ -65,7 +48,7 @@ buttonClosePopUpProfile.addEventListener("click", () =>
   hidePopUp(popUpProfileEdit)
 );
 
-buttonOpenAddCard.addEventListener("click", () => openPopUp(popUpAddCard));
+buttonOpenAddCard.addEventListener("click", () => openPopUpAddCard());
 
 formAddCard.addEventListener("submit", (evt) => submitAddCard(evt));
 

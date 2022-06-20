@@ -20,7 +20,7 @@ const castilioImage = new URL(
   import.meta.url
 );
 
-const place = [
+const places = [
   {
     link: milandiImage,
     name: "Миланди",
@@ -107,7 +107,7 @@ const validateConfig = {
 };
 
 export {
-  place,
+  places,
   popUpProfileEdit,
   formProfileEdit,
   buttonOpenProfilEdit,
