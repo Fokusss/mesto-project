@@ -29,16 +29,24 @@ import {
   addCard,
 } from "./components/card.js";
 
+import { configApi } from "./components/data.js";
+
+import { updateUser, toSendCard, updateCards } from "./components/api.js";
+
 import "./pages/index.css";
 
-function addCards(places) {
-  places.forEach((item) => {
-    addCard(item.name, item.link);
-  });
-}
+
+
 
 setValidationForm(validateConfig);
-addCards(places);
+
+updateUser(configApi);
+updateCards(configApi);
+
+
+
+
+
 
 buttonOpenProfilEdit.addEventListener("click", () => openPopUpProfile());
 

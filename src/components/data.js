@@ -22,51 +22,51 @@ const castilioImage = new URL(
 
 const places = [
   {
-    link: milandiImage,
+    link: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Pillar_of_Vasco_da_Gama.jpg/1024px-Pillar_of_Vasco_da_Gama.jpg?1655847610112',
     name: "Миланди",
   },
   {
-    link: mombasaImage,
+    link: 'https://upload.wikimedia.org/wikipedia/commons/6/63/Mombasa-MarketHall.jpg?1655847506025',
     name: "Момбаса",
   },
   {
-    link: kilwaImage,
+    link: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Ruins_of_Kilwa_Kisiwani_and_Ruins_of_Songo_Mnara-108261.jpg/1024px-Ruins_of_Kilwa_Kisiwani_and_Ruins_of_Songo_Mnara-108261.jpg',
     name: "Килва-Кисивани",
   },
   {
-    link: puntaarneasImage,
+    link: 'https://upload.wikimedia.org/wikipedia/commons/9/92/PArenas_Magallanes.JPG',
     name: "Пунта-Аренас",
   },
   {
-    link: tenerifeImage,
+    link: 'https://wikiway.com/upload/hl-photo/c81/be3/ostrov-tenerife_206.jpg',
     name: "Тенерифе",
   },
   {
-    link: sevilyaImage,
+    link: 'https://wikiway.com/upload/hl-photo/7c8/24f/sevilya_80.jpg',
     name: "Севилья",
   },
   {
-    link: mysNadejdiImage,
+    link: 'https://wikiway.com/upload/hl-photo/81d/5f9/mys-dobroy-nadezhdy_60.jpg',
     name: "Мыс Доброй Надежды",
   },
   {
-    link: ostrovSantaKrusImage,
+    link: 'https://wikiway.com/upload/hl-photo/903/0f6/ostrov-santa-krus_33.jpg',
     name: "Санта-Крус",
   },
   {
-    link: guamImage,
+    link: 'https://wikiway.com/upload/resize_cache/uf/735/1024_800_1/guam_3.jpg',
     name: "Гуам",
   },
   {
-    link: sebuImage,
+    link: 'https://cdn.skyrisecities.com/sites/default/files/images/cities/14653/14653-42004.jpg',
     name: "Себу",
   },
   {
-    link: tidoreImage,
+    link: 'https://www.ratnadewi.me/wp-content/uploads/2017/03/tidore.jpg',
     name: "Тидоре",
   },
   {
-    link: castilioImage,
+    link: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Castillo_Santiago_Sanlucar.JPG/800px-Castillo_Santiago_Sanlucar.JPG',
     name: "Санлукар-де-Баррамеда",
   },
 ];
@@ -106,6 +106,11 @@ const validateConfig = {
   errorClass: "form__error_active",
 };
 
+const configApi = {
+  url: 'https://mesto.nomoreparties.co/v1/plus-cohort-13',
+  token: '69e1601f-6c3f-4190-af86-3fd180da8137',
+}
+
 export {
   places,
   popUpProfileEdit,
@@ -127,4 +132,5 @@ export {
   formInputMestoName,
   formInputUrlImage,
   validateConfig,
+  configApi,
 };

@@ -1,5 +1,6 @@
-import { templateCard, cardsContainer, popUpImage } from "./data.js";
+import { templateCard, cardsContainer, popUpImage, configApi} from "./data.js";
 import { openPopUp } from "./modal.js";
+import {toPutLike} from './api.js'
 
 function changePopUpImage(name, urlImage) {
   const image = popUpImage.querySelector(".pop-up__images");
@@ -15,17 +16,21 @@ function deleteCard(evt) {
 
 function likeCard(evt) {
   evt.target.classList.toggle("card__like_active");
+  const id = evt.target.id
+  toPutLike(configApi, id)
 }
 
-function createCard(name, urlImage) {
+function createCard(name, urlImage, id, likes) {
   const cardLi = templateCard.querySelector("li").cloneNode(true);
   const buttonDeleteCard = cardLi.querySelector(".card__delete");
   const buttonLikeCard = cardLi.querySelector(".card__like");
   const cardImage = cardLi.querySelector(".card__image");
-
+  const countLikes = cardLi.querySelector('.card__linke-count')
   cardLi.querySelector(".card__name").textContent = name;
   cardImage.src = urlImage;
   cardImage.alt = name;
+  buttonLikeCard.setAttribute('id', id);
+  countLikes.textContent = likes.length
   buttonDeleteCard.addEventListener("click", (evt) => deleteCard(evt));
   buttonLikeCard.addEventListener("click", (evt) => likeCard(evt));
   cardImage.addEventListener("click", (evt) =>
@@ -34,8 +39,8 @@ function createCard(name, urlImage) {
   return cardLi;
 }
 
-function addCard(name, urlImage) {
-  const newCard = createCard(name, urlImage);
+function addCard(name, urlImage, id, likes) {
+  const newCard = createCard(name, urlImage, id, likes);
   cardsContainer.prepend(newCard);
 }
 

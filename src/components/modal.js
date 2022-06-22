@@ -10,11 +10,14 @@ import {
   formInputMestoName,
   formInputUrlImage,
   validateConfig,
+  configApi
 } from "./data.js";
 
 import { toggleActiveButton } from "./validate.js";
 
 import { addCard } from "./card.js";
+
+import {changeProfile, toSendCard} from './api.js'
 
 function workHideEscape(evt) {
   if (evt.key === "Escape") {
@@ -59,13 +62,18 @@ function chageProfile() {
 
 function submitProfileEdit(evt) {
   evt.preventDefault();
-  chageProfile();
+  changeProfile(configApi, formInputName.value, formInputText.value) /* Работа с API*/
   hidePopUp(popUpProfileEdit);
+
 }
 
 function submitAddCard(evt) {
   evt.preventDefault();
-  addCard(formInputMestoName.value, formInputUrlImage.value);
+  const dateJson = JSON.stringify({
+    name: formInputMestoName.value,
+    link: formInputUrlImage.value,
+  })
+  toSendCard(configApi,dateJson);
   formAddCard.reset();
   hidePopUp(popUpAddCard);
 }

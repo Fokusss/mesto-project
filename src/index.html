@@ -15,7 +15,7 @@
 
   <main>
     <section class="section profile">
-      <img src="<%=require('./images/fernan-magelan.jpg')%>" alt="Аватар" class="profile__avatar" />
+      <img src="" alt="Аватар" class="profile__avatar" />
       <div class="profile__info">
         <h1 class="profile__name">Фернан Магеллан</h1>
         <p class="profile__text">Тоже исследователь океана</p>
@@ -39,11 +39,13 @@
       <h2 class="pop-up__title">Редактировать профиль</h2>
       <form name="profile-edit" class="pop-up__form">
         <label class="form__field">
-          <input id="name-author" required minlength="2" maxlength="40" placeholder="Имя" type="text" name="name" class="form__input">
+          <input id="name-author" required minlength="2" maxlength="40" placeholder="Имя" type="text" name="name"
+            class="form__input">
           <span class="name-author-error form__error"></span>
         </label>
         <label class="form__field">
-          <input id="sub-name-author" required minlength="2" maxlength="200" placeholder="О себе" type="text" name="text" class="form__input">
+          <input id="sub-name-author" required minlength="2" maxlength="200" placeholder="О себе" type="text"
+            name="text" class="form__input">
           <span class="sub-name-author-error form__error"></span>
         </label>
         <button aria-label="Save" type="submit" class="form__save button">Сохранить</button>
@@ -86,7 +88,10 @@
         <img src="" alt="фото места" class="card__image" />
         <div class="card__down">
           <h2 class="card__name"></h2>
-          <button aria-label="like" type="button" class="card__like button"></button>
+          <div class="card__like-count">
+            <button aria-label="like" type="button" class="card__like button"></button>
+            <p class="card__linke-count">0</p>
+          </div>
         </div>
         <button aria-label="delete" type="button" class="card__delete button"></button>
       </div>

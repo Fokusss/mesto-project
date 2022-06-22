@@ -10,4 +10,6 @@
   opacity: 0;
   pointer-events: none;
   transition: .5s;
+  justify-content: center;
+  align-items: center;
 }
