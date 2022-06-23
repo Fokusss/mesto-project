@@ -81,6 +81,7 @@ function submitAddCard(evt) {
 function openPopUpProfile() {
   changeValue();
   openPopUp(popUpProfileEdit);
+  updateButtonSave(popUpProfileEdit);
 }
 
 function openPopUpAddCard() {

@@ -1,6 +1,6 @@
-import { profileName, profileText } from "./data.js";
+import { profileName, profileText} from "./data.js";
 import {addCards} from './until.js'
-import {addCard} from './card.js'
+import {addCard, wasLike} from './card.js'
 
 function changeTextProfile(res) {
   profileName.textContent = res.name;
@@ -24,7 +24,7 @@ function updateUser(config) {
     })
     .then((res) => {
       changeTextProfile(res);
-      changeAvatar(res)
+      changeAvatar(res);
     });
 }
 
@@ -74,14 +74,15 @@ function updateCards(config){
     })
 }
 
-function toPutLike(config, cardId){
-  fetch(`${config.url}/cards/likes/${cardId}`,{
-    method: 'PUT',
+function toPutLike(config, card, metod){
+  fetch(`${config.url}/cards/likes/${card.id}`,{
+    method: metod,
     headers: {
       authorization: `${config.token}`
     }
   }).then((res) => res.json())
-    .then((res) => console.log(res))
+    .then((res) => wasLike(config, card, res.likes))
 }
 
-export { updateUser, changeProfile, toSendCard, updateCards, toPutLike};
+
+export { updateUser, changeProfile, toSendCard, updateCards, toPutLike,};

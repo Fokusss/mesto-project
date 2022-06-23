@@ -109,7 +109,10 @@ const validateConfig = {
 const configApi = {
   url: 'https://mesto.nomoreparties.co/v1/plus-cohort-13',
   token: '69e1601f-6c3f-4190-af86-3fd180da8137',
+  id: '1c333a798ca5f742474a346e', /* Возможно, есть смысл переделать это в константу и вызывать функцию*/
 }
+
+
 
 export {
   places,
