@@ -1,88 +1,70 @@
-import { profileName, profileText} from "./data.js";
-import {addCards} from './until.js'
-import {addCard, wasLike} from './card.js'
+import { configApi } from "./data"
 
-function changeTextProfile(res) {
-  profileName.textContent = res.name;
-  profileText.textContent = res.about;
+
+const updateCards = () => {
+  return fetch(`${configApi.url}/cards`, {
+    method: 'GET',
+    headers: configApi.headers})
 }
 
-function changeAvatar(res) {
-  const avatar = document.querySelector('.profile__avatar');
-  avatar.setAttribute('src', res.avatar)
-}
-
-function updateUser(config) {
-  fetch(`${config.url}/users/me`, {
-    headers: {
-      authorization: `${config.token}`,
-    },
+const updateUser = () => {
+  return fetch(`${configApi.url}/users/me`, {
+    headers: configApi.headers,
     method: "GET",
   })
-    .then((res) => {
-      return res.json();
-    })
-    .then((res) => {
-      changeTextProfile(res);
-      changeAvatar(res);
-    });
 }
 
-function changeProfile(config, importName, importText) {
-  fetch(`${config.url}/users/me`, {
+const changeProfile = (importName, importText) => {
+  return fetch(`${configApi.url}/users/me`, {
     method: 'PATCH',
-    headers: {
-      authorization: `${config.token}`,
-      'Content-Type': 'application/json',
-    },
+    headers: configApi.headers,
     body: JSON.stringify({
       name: `${importName}`,
       about: `${importText}`,
     })
   })
-    .then((res) => res.json())
-    .then((res) => changeTextProfile(res));
 }
 
-function toSendCard(config, date){
-  fetch(`${config.url}/cards`,{
+const toSendCard = (date) => {
+  return fetch(`${configApi.url}/cards`,{
     method: 'POST',
-    headers: {
-      authorization: `${config.token}`,
-      'Content-Type': 'application/json',
-    },
-    body: date,
+    headers: configApi.headers,
+    body: JSON.stringify(date),
   })
-    .then((res) => res.json())
-    .then((res) => {
-      const name = res.name
-      const link = res.link
-      const id = res._id
-      addCard(name, link, id)
-    })
 }
 
-function updateCards(config){
-  fetch(`${config.url}/cards`, {
-    method: 'GET',
-    headers: {
-      authorization: `${config.token}`
-    }
-  }).then((res) => res.json())
-    .then((res) => {
-      addCards(res)
-    })
-}
-
-function toPutLike(config, card, metod){
-  fetch(`${config.url}/cards/likes/${card.id}`,{
+const toPutLike = (card, metod) => {
+  return fetch(`${configApi.url}/cards/likes/${card.id}`,{
     method: metod,
-    headers: {
-      authorization: `${config.token}`
+    headers: configApi.headers
+  })
+    .then((res) => {
+    if (res.ok){
+      return res.json()
     }
-  }).then((res) => res.json())
-    .then((res) => wasLike(config, card, res.likes))
+    return Promise.reject(`Ошибка ${res.status}`)
+  })
 }
 
+const deleteCardApi = (card) => {
+  return fetch(`${configApi.url}/cards/${card.id}`, {
+    method: 'DELETE',
+    headers: configApi.headers
+  })
+}
 
-export { updateUser, changeProfile, toSendCard, updateCards, toPutLike,};
+const avatarEditApi = (link) => {
+  return fetch(`${configApi.url}/users/me/avatar`, {
+    method: 'PATCH',
+    headers: configApi.headers,
+    body: JSON.stringify(link)
+  })
+    .then((res) => {
+      if (res.ok) {
+        return res.json()
+      }
+      return Promise.reject(`Ошибка ${res.status}`)
+    })
+}
+
+export { updateUser, changeProfile, toSendCard, updateCards, toPutLike, deleteCardApi, avatarEditApi};

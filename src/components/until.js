@@ -1,9 +1,14 @@
-import { addCard } from './card.js'
+import { profileName, profileText, avatar } from "./data";
 
-function addCards(places) {
-  places.forEach((item) => {
-    addCard(item.name, item.link, item._id, item.likes);
-  });
+
+function changeTextProfile(res) {
+  profileName.textContent = res.name;
+  profileText.textContent = res.about;
 }
 
-export {addCards}
+function changeAvatar(res) {
+  avatar.setAttribute('src', res.avatar)
+}
+
+
+export { changeTextProfile, changeAvatar}

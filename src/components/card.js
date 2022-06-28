@@ -1,63 +1,80 @@
-import { templateCard, cardsContainer, popUpImage, configApi,} from "./data.js";
-import { openPopUp } from "./modal.js";
-import {toPutLike, updateLike} from './api.js'
+import { templateCard, cardsContainer, popUpDelete, configApi} from "./data.js";
+import { openPopUp, changePopUpImage, changePopUpDelete} from "./modal.js";
+import {toPutLike} from './api.js'
 
-function changePopUpImage(name, urlImage) {
-  const image = popUpImage.querySelector(".pop-up__images");
-  image.src = urlImage;
-  image.alt = name;
-  popUpImage.querySelector(".pop-up__caption").textContent = name;
-  openPopUp(popUpImage);
-}
 
 function deleteCard(evt) {
-  evt.target.closest("li").remove();
+  const card = evt.target
+  openPopUp(popUpDelete)
+  changePopUpDelete(card)
 }
 
 function likeCard(evt) {
   const card = evt.target
   if (card.classList.contains('card__like_active')){
-    toPutLike(configApi, card, 'DELETE')
+    toPutLike(card, 'DELETE')
+      .then((res) => {
+        wasLike(configApi, card, res.likes)
+      })
+      .catch((res) => console.log(res))
   } else {
-    toPutLike(configApi, card, 'PUT')
+    toPutLike(card, 'PUT')
+    .then((res) => {
+      wasLike(configApi, card, res.likes)
+    })
+    .catch((res) => console.log(res))
   }
-
 }
 
 function wasLike(config, button, likes){
   const countLike = button.parentElement.querySelector('.card__linke-count')
   countLike.textContent = likes.length
-  likes.forEach((item) => {
-    if (item._id === config.id){
-      button.classList.add('card__like_active');
-    } else {
-      button.classList.remove('card__like_active')
-    }
-  })
+  if (likes.length === 0){
+    return;
+  }
+  let like = likes.find((item) => item._id === config.id);
+  console.log(like)
+  if (like != undefined){
+    button.classList.add('card__like_active')
+  } else {
+    button.classList.remove('card__like_active')
+  }
 }
 
-function createCard(name, urlImage, id, likes) {
+function activDeleteButton(config, date, button){
+  if (date._id != config.id){
+    button.classList.add('card__delete_inactive')
+  }
+}
+
+function createCard(date) {
   const cardLi = templateCard.querySelector("li").cloneNode(true);
   const buttonDeleteCard = cardLi.querySelector(".card__delete");
   const buttonLikeCard = cardLi.querySelector(".card__like");
   const cardImage = cardLi.querySelector(".card__image");
   const countLikes = cardLi.querySelector('.card__linke-count')
-  cardLi.querySelector(".card__name").textContent = name;
-  cardImage.src = urlImage;
-  cardImage.alt = name;
-  buttonLikeCard.setAttribute('id', id);
-  countLikes.textContent = likes.length
-  wasLike(configApi, buttonLikeCard, likes)
+
+  cardLi.querySelector(".card__name").textContent = date.name;
+  cardImage.src = date.link;
+  cardImage.alt = date.name;
+
+  buttonDeleteCard.setAttribute('id', date._id);
+  buttonLikeCard.setAttribute('id', date._id);
+  countLikes.textContent = date.likes.length
+
+  activDeleteButton(configApi, date.owner, buttonDeleteCard)
+  wasLike(configApi, buttonLikeCard, date.likes)
+
   buttonDeleteCard.addEventListener("click", (evt) => deleteCard(evt));
   buttonLikeCard.addEventListener("click", (evt) => likeCard(evt));
   cardImage.addEventListener("click", (evt) =>
-    changePopUpImage(name, urlImage)
+    changePopUpImage(date.name, date.link)
   );
   return cardLi;
 }
 
-function addCard(name, urlImage, id, likes) {
-  const newCard = createCard(name, urlImage, id, likes);
+function addCard(date) {
+  const newCard = createCard(date);
   cardsContainer.prepend(newCard);
 }
 

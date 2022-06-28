@@ -15,10 +15,10 @@
 
   <main>
     <section class="section profile">
-      <img src="" alt="Аватар" class="profile__avatar" />
+      <a href="#" class="profile__avatar-button"><img src="" alt="Аватар" class="profile__avatar" /></a>
       <div class="profile__info">
-        <h1 class="profile__name">Фернан Магеллан</h1>
-        <p class="profile__text">Тоже исследователь океана</p>
+        <h1 class="profile__name">Имя</h1>
+        <p class="profile__text">О</p>
         <button aria-label="edit" type="button" class="profile__edit button"></button>
       </div>
       <button aria-label="add" type="button" class="profile__add button"></button>
@@ -82,6 +82,32 @@
     </figure>
 
   </div>
+
+  <div class="pop-up pop-up_el_delete">
+    <div class="pop-up__body">
+      <h2 class="pop-up__title">Вы уверены?</h2>
+      <form novalidate name="delete-card" class="pop-up__form">
+        <button aria-label="Save" type="submit" class="form__save button">Да</button>
+      </form>
+      <button aria-label="Close" type="button" class="pop-up__close button"></button>
+    </div>
+  </div>
+
+  <div class="pop-up pop-up_el_avatar-edit">
+    <div class="pop-up__body">
+      <h2 class="pop-up__title">Обновить аватар</h2>
+      <form novalidate name="avatar-edit" class="pop-up__form">
+        <label class="form__field">
+          <input id="new-avatar" required placeholder="Ссылка" type="url"
+            name="avatar-lik" class="form__input">
+          <span class="new-avatar-error form__error"></span>
+        </label>
+        <button aria-label="Save" type="submit" class="form__save button">Сохранить</button>
+      </form>
+      <button aria-label="Close" type="button" class="pop-up__close button"></button>
+    </div>
+  </div>
+
   <template id="card-js">
     <li>
       <div class="card">
