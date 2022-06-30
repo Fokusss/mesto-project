@@ -16,9 +16,9 @@ import {
   buttonCloseAvatarEdit,
   popUpAvatarEdit,
   formAvatarEdit,
-} from "./components/data.js";
+} from "./data.js";
 
-import { setValidationForm } from "./components/validate.js";
+import { setValidationForm } from "./validate.js";
 
 import {
   hidePopUp,
@@ -29,51 +29,31 @@ import {
   submitDeleteCard,
   openPopUpAvatarEdit,
   submitAvatarEdit,
-} from "./components/modal.js";
+} from "./modal.js";
 
-import { addCard } from "./components/card.js";
+import { addCard } from "./card.js";
 
-import { updateUser, updateCards } from "./components/api.js";
+import { updateUser, updateCards } from "./api.js";
 
-import "./pages/index.css";
-import { changeAvatar, changeTextProfile } from "./components/until.js";
+import "../pages/index.css";
+import { changeAvatar, changeTextProfile, changeId } from "./utils.js";
 
-function addCards() {
-  updateCards()
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Ошибка ${res.status}`);
-    })
-    .then((res) => {
-      res.reverse();
-      res.forEach((item) => {
-        addCard(item);
-      });
-    })
-    .catch((res) => console.log(res));
-}
-
-function updateProfele() {
-  updateUser()
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Ошибка ${res.status}`);
-    })
-    .then((res) => {
-      changeTextProfile(res);
-      changeAvatar(res);
-    })
-    .catch((res) => console.log(res));
-}
 
 setValidationForm(validateConfig);
 
-updateProfele();
-addCards();
+Promise.all([updateCards(), updateUser()])
+  .then((values) => {
+    const resCards = values[0];
+    const resUser = values[1];
+    changeTextProfile(resUser);
+    changeAvatar(resUser);
+    changeId(resUser);
+    resCards.reverse();
+    resCards.forEach((item) => {
+      addCard(item)
+    })
+  }).catch((err) => console.log(err))
+
 
 buttonOpenProfilEdit.addEventListener("click", () => openPopUpProfile());
 

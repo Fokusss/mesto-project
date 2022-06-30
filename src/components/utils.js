@@ -1,4 +1,4 @@
-import { profileName, profileText, avatar } from "./data";
+import { profileName, profileText, avatar, configApi } from "./data";
 
 
 function changeTextProfile(res) {
@@ -10,5 +10,9 @@ function changeAvatar(res) {
   avatar.setAttribute('src', res.avatar)
 }
 
+function changeId(res) {
+  configApi.id = res._id;
+}
 
-export { changeTextProfile, changeAvatar}
+
+export { changeTextProfile, changeAvatar, changeId}

@@ -4,7 +4,6 @@ const configApi = {
     authorization: "69e1601f-6c3f-4190-af86-3fd180da8137",
     "Content-Type": "application/json",
   },
-  id: "1c333a798ca5f742474a346e",
 };
 
 const avatar = document.querySelector(".profile__avatar");
@@ -13,6 +12,7 @@ const buttonOpenProfilEdit = document.querySelector(".profile__edit");
 const formProfileEdit = document.querySelector('form[name="profile-edit"]');
 const buttonClosePopUpProfile =
   popUpProfileEdit.querySelector(".pop-up__close");
+const buttonSaveProfile = popUpProfileEdit.querySelector(".form__save");
 
 const popUpAddCard = document.querySelector(".pop-up_el_add-card");
 const buttonOpenAddCard = document.querySelector(".profile__add");
@@ -23,6 +23,7 @@ const cardsContainer = document.querySelector(".photo__grid");
 
 const popUpImage = document.querySelector(".pop-up_el_image");
 const buttonCloseImage = popUpImage.querySelector(".pop-up__close");
+const image = popUpImage.querySelector(".pop-up__images");
 
 const formInputName = popUpProfileEdit.querySelector('input[name="name"]');
 const formInputText = popUpProfileEdit.querySelector('input[name="text"]');
@@ -88,4 +89,6 @@ export {
   buttonOpenAvatarEdit,
   formAvatarLinkInput,
   configApi,
+  image,
+  buttonSaveProfile
 };

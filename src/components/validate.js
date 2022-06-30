@@ -1,3 +1,5 @@
+import { validateConfig } from "./data";
+
 const showInputError = (form, input, config) => {
   const error = form.querySelector(`.${input.id}-error`);
   error.textContent = input.validationMessage;
@@ -56,6 +58,15 @@ const setValidationForm = (config) => {
   });
 };
 
+function updateForm(element) {
+  const inputList = Array.from(element.querySelectorAll(validateConfig.inputSelector));
+  const buttonSave = element.querySelector(validateConfig.submitButtonSelector);
+  inputList.forEach(inputElement => hideInputError(element, inputElement, validateConfig));
+  toggleActiveButton(inputList, buttonSave, validateConfig);
+}
+
+
+
 export {
   showInputError,
   hideInputError,
@@ -64,4 +75,5 @@ export {
   toggleActiveButton,
   setEventListeners,
   setValidationForm,
+  updateForm,
 };

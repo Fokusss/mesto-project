@@ -1,17 +1,25 @@
 import { configApi } from "./data"
 
+function updatePromise(res){
+  if (res.ok) {
+    return res.json();
+  }
+  return Promise.reject(`Ошибка ${res.status}`);
+}
+
 
 const updateCards = () => {
   return fetch(`${configApi.url}/cards`, {
     method: 'GET',
     headers: configApi.headers})
+    .then((res) => updatePromise(res))
 }
 
 const updateUser = () => {
   return fetch(`${configApi.url}/users/me`, {
     headers: configApi.headers,
     method: "GET",
-  })
+  }).then((res) => updatePromise(res))
 }
 
 const changeProfile = (importName, importText) => {
@@ -22,7 +30,7 @@ const changeProfile = (importName, importText) => {
       name: `${importName}`,
       about: `${importText}`,
     })
-  })
+  }).then((res) => updatePromise(res))
 }
 
 const toSendCard = (date) => {
@@ -30,7 +38,7 @@ const toSendCard = (date) => {
     method: 'POST',
     headers: configApi.headers,
     body: JSON.stringify(date),
-  })
+  }).then((res) => updatePromise(res))
 }
 
 const toPutLike = (card, metod) => {
@@ -50,7 +58,7 @@ const deleteCardApi = (card) => {
   return fetch(`${configApi.url}/cards/${card.id}`, {
     method: 'DELETE',
     headers: configApi.headers
-  })
+  }).then((res) => updatePromise(res))
 }
 
 const avatarEditApi = (link) => {

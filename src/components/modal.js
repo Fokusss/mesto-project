@@ -16,9 +16,11 @@ import {
   popUpAvatarEdit,
   formAvatarLinkInput,
   formAvatarEdit,
+  image,
+  buttonSaveProfile,
 } from "./data.js";
 
-import { toggleActiveButton } from "./validate.js";
+import { toggleActiveButton, updateForm } from "./validate.js";
 
 import { addCard } from "./card.js";
 
@@ -28,7 +30,7 @@ import {
   deleteCardApi,
   avatarEditApi,
 } from "./api.js";
-import { changeTextProfile, changeAvatar } from "./until.js";
+import { changeTextProfile, changeAvatar } from "./utils.js";
 
 function workHideEscape(evt) {
   if (evt.key === "Escape") {
@@ -56,7 +58,7 @@ function changePopUpDelete(card) {
 }
 
 function changePopUpImage(name, urlImage) {
-  const image = popUpImage.querySelector(".pop-up__images");
+
   image.src = urlImage;
   image.alt = name;
   popUpImage.querySelector(".pop-up__caption").textContent = name;
@@ -67,12 +69,6 @@ function openPopUp(element) {
   element.classList.add("pop-up_active");
   document.addEventListener("keydown", workHideEscape);
   document.addEventListener("mousedown", workHideOverlay);
-}
-
-function updateButtonSave(element) {
-  const inputList = Array.from(element.querySelectorAll(".form__input"));
-  const buttonSave = element.querySelector(".form__save");
-  toggleActiveButton(inputList, buttonSave, validateConfig);
 }
 
 function hidePopUp(element) {
@@ -88,23 +84,16 @@ function changeValue() {
 
 function submitProfileEdit(evt) {
   evt.preventDefault();
-  const button = document.querySelector(".form__save");
-  renderSubmit(button, true, "Сохранить...");
+  renderSubmit(buttonSaveProfile, true, "Сохранить...");
   changeProfile(formInputName.value, formInputText.value)
     .then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Ошибка ${res.status}`);
-    })
-    .then((res) => {
       changeTextProfile(res);
+      hidePopUp(popUpProfileEdit);
     })
     .catch((res) => console.log(res))
     .finally(() => {
-      renderSubmit(button, false, "Сохранить");
+      renderSubmit(buttonSaveProfile, false, "Сохранить");
     });
-  hidePopUp(popUpProfileEdit);
 }
 
 function submitAddCard(evt) {
@@ -117,20 +106,14 @@ function submitAddCard(evt) {
   };
   toSendCard(date)
     .then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Ошибка ${res.status}`);
-    })
-    .then((res) => {
       addCard(res);
+      hidePopUp(popUpAddCard);
+      formAddCard.reset();
     })
     .catch((res) => console.log(res))
     .finally(() => {
       renderSubmit(button, false, "Создать");
     });
-  formAddCard.reset();
-  hidePopUp(popUpAddCard);
 }
 
 function submitDeleteCard(evt) {
@@ -138,12 +121,6 @@ function submitDeleteCard(evt) {
   const button = evt.target.querySelector(".form__save");
   renderSubmit(button, true, "Удаление...");
   deleteCardApi(button)
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Ошибка ${res.status}`);
-    })
     .then((res) => {
       if (res.message === "Пост удалён") {
         const cardsList = Array.from(
@@ -170,29 +147,29 @@ function submitAvatarEdit(evt) {
   avatarEditApi(link)
     .then((res) => {
       changeAvatar(res);
+      hidePopUp(popUpAvatarEdit);
+      formAvatarEdit.reset();
     })
     .catch((res) => console.log(res))
     .finally(() => {
       renderSubmit(button, true, "Сохранить");
-      hidePopUp(popUpAvatarEdit);
-      formAvatarEdit.reset();
     });
 }
 
 function openPopUpProfile() {
   changeValue();
   openPopUp(popUpProfileEdit);
-  updateButtonSave(popUpProfileEdit);
+  updateForm(popUpProfileEdit);
 }
 
 function openPopUpAddCard() {
-  updateButtonSave(popUpAddCard);
+  updateForm(popUpAddCard);
   openPopUp(popUpAddCard);
 }
 
 function openPopUpAvatarEdit() {
   openPopUp(popUpAvatarEdit);
-  updateButtonSave(popUpAvatarEdit);
+  updateForm(popUpAvatarEdit);
 }
 
 export {
