@@ -18,6 +18,8 @@ import {
   formAvatarEdit,
   image,
   buttonSaveProfile,
+  buttonAddCardSave,
+  buttonAvatarEditSave,
 } from "./data.js";
 
 import { toggleActiveButton, updateForm } from "./validate.js";
@@ -98,8 +100,7 @@ function submitProfileEdit(evt) {
 
 function submitAddCard(evt) {
   evt.preventDefault();
-  const button = popUpAddCard.querySelector(".form__save");
-  renderSubmit(button, true, "Сохранение...");
+  renderSubmit(buttonAddCardSave, true, "Сохранение...");
   const date = {
     name: formInputMestoName.value,
     link: formInputUrlImage.value,
@@ -112,22 +113,21 @@ function submitAddCard(evt) {
     })
     .catch((res) => console.log(res))
     .finally(() => {
-      renderSubmit(button, false, "Создать");
+      renderSubmit(buttonAddCardSave, false, "Создать");
     });
 }
 
 function submitDeleteCard(evt) {
   evt.preventDefault();
-  const button = evt.target.querySelector(".form__save");
-  renderSubmit(button, true, "Удаление...");
-  deleteCardApi(button)
+  renderSubmit(buttonSubmitPopUpDelete, true, "Удаление...");
+  deleteCardApi(buttonSubmitPopUpDelete)
     .then((res) => {
       if (res.message === "Пост удалён") {
         const cardsList = Array.from(
           postSection.querySelectorAll(".card__delete")
         );
         let cardDelete = cardsList.find((item) => {
-          return item.id == button.id;
+          return item.id == buttonSubmitPopUpDelete.id;
         });
         cardDelete.closest("li").remove();
         hidePopUp(popUpDelete);
@@ -135,14 +135,13 @@ function submitDeleteCard(evt) {
     })
     .catch((res) => console.log(res))
     .finally(() => {
-      renderSubmit(button, false, "Да");
+      renderSubmit(buttonSubmitPopUpDelete, false, "Да");
     });
 }
 
 function submitAvatarEdit(evt) {
   evt.preventDefault();
-  const button = evt.target.querySelector(".form__save");
-  renderSubmit(button, true, "Сохранение...");
+  renderSubmit(buttonAvatarEditSave, true, "Сохранение...");
   const link = { avatar: formAvatarLinkInput.value };
   avatarEditApi(link)
     .then((res) => {
@@ -152,7 +151,7 @@ function submitAvatarEdit(evt) {
     })
     .catch((res) => console.log(res))
     .finally(() => {
-      renderSubmit(button, true, "Сохранить");
+      renderSubmit(buttonAvatarEditSave, true, "Сохранить");
     });
 }
 

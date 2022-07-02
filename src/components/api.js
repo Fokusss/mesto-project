@@ -46,12 +46,7 @@ const toPutLike = (card, metod) => {
     method: metod,
     headers: configApi.headers
   })
-    .then((res) => {
-    if (res.ok){
-      return res.json()
-    }
-    return Promise.reject(`Ошибка ${res.status}`)
-  })
+    .then((res) => updatePromise(res))
 }
 
 const deleteCardApi = (card) => {
@@ -67,12 +62,7 @@ const avatarEditApi = (link) => {
     headers: configApi.headers,
     body: JSON.stringify(link)
   })
-    .then((res) => {
-      if (res.ok) {
-        return res.json()
-      }
-      return Promise.reject(`Ошибка ${res.status}`)
-    })
+    .then((res) => updatePromise(res))
 }
 
 export { updateUser, changeProfile, toSendCard, updateCards, toPutLike, deleteCardApi, avatarEditApi};

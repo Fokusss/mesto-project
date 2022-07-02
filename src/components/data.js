@@ -18,6 +18,7 @@ const popUpAddCard = document.querySelector(".pop-up_el_add-card");
 const buttonOpenAddCard = document.querySelector(".profile__add");
 const formAddCard = popUpAddCard.querySelector('form[name="card-add"]');
 const buttonCloseAddCard = popUpAddCard.querySelector(".pop-up__close");
+const buttonAddCardSave = popUpAddCard.querySelector('.form__save');
 const templateCard = document.querySelector("#card-js").content;
 const cardsContainer = document.querySelector(".photo__grid");
 
@@ -46,6 +47,7 @@ const formAvatarEdit = popUpAvatarEdit.querySelector(".pop-up__form");
 const formAvatarLinkInput = formAvatarEdit.querySelector(
   'input[name="avatar-lik"]'
 );
+const buttonAvatarEditSave = popUpAvatarEdit.querySelector('.form__save');
 
 const postSection = document.querySelector(".photo__grid");
 
@@ -90,5 +92,7 @@ export {
   formAvatarLinkInput,
   configApi,
   image,
-  buttonSaveProfile
+  buttonSaveProfile,
+  buttonAddCardSave,
+  buttonAvatarEditSave,
 };
